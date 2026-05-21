@@ -220,7 +220,7 @@
                         <ul class="space-y-4 font-medium">
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
-                                <span>Saturación de herramientas (pagas Notion, Asana, Drive y no usas nada bien).</span>
+                                <span>Caos tecnológico y automatizaciones rotas (pagas decenas de suscripciones y tienes un "Frankenstein" de herramientas desconectadas que complican tu operación).</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
@@ -335,7 +335,7 @@
                         <button onclick="toggleApiKeyInput()" class="text-xs text-gray-400 hover:text-brand-blue transition flex items-center gap-1.5 focus:outline-none">
                             <i class="fa-solid fa-gear"></i> Configuración de API Key (Obligatorio en producción externa)
                         </button>
-                        <div id="api-key-container" class="mt-2">
+                        <div id="api-key-container" class="mt-2 hidden">
                             <input type="password" id="gemini-api-key" class="w-full rounded-lg border border-gray-200 p-2 text-xs focus:border-brand-purple outline-none bg-yellow-50" placeholder="Pega tu Google Gemini API Key aquí para activar la IA en tu web de GitHub">
                             <p class="text-[11px] text-gray-500 mt-1">Para que tus clientes usen el asistente en tu web, crea una clave gratis en Google AI Studio y pégala aquí (o déjala guardada directamente en tu código).</p>
                         </div>
@@ -375,7 +375,7 @@
                     <div id="ai-error-box" class="hidden mt-8 p-4 bg-red-50 rounded-xl border border-red-200 text-red-700 text-sm flex gap-2 items-start">
                         <i class="fa-solid fa-circle-exclamation mt-0.5 flex-shrink-0"></i>
                         <div>
-                            <h4 class="font-bold">Error en la optimización</h4>
+                            <h4 class="font-bold">Aviso del Sistema</h4>
                             <p id="ai-error-message" class="text-xs text-red-600 mt-1">Ocurrió un problema de conexión. Inténtalo nuevamente en unos instantes.</p>
                         </div>
                     </div>
@@ -529,7 +529,7 @@
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> KPIs del negocio</li>
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Dashboard financiero</li>
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Rutinas sostenibles</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Plan de continuidad</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Plan de continuity</li>
                                 </ul>
                             </div>
                         </div>
@@ -573,12 +573,39 @@
                             <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> No pueden pagar tecnología costosa</li>
                         </ul>
 
-                        <p class="font-bold text-gray-700 mb-4 border-t pt-4">¿Qué incluye?</p>
+                        <p class="font-bold text-gray-700 mb-4 border-t pt-4">Lo que incluye ORDEN CORE:</p>
+                        
+                        <div class="mb-4 bg-brand-pink/5 border border-brand-pink/20 p-3 rounded-xl text-xs text-gray-700 flex items-start gap-2">
+                            <i class="fa-solid fa-bullseye text-brand-pink mt-0.5 text-base"></i>
+                            <span>Enfocado en mejorar en 14 días máximo <strong>dos objetivos</strong> del negocio.</span>
+                        </div>
+
                         <ul class="space-y-3 text-sm">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-pink mt-1 mr-2"></i> <span>Dashboard principal & Sistema de Tareas</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-pink mt-1 mr-2"></i> <span>Gestión financiera simple y KPIs básicos</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-pink mt-1 mr-2"></i> <span>Indicadores: CAC, Ticket Promedio, Margen</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-pink mt-1 mr-2"></i> <span>Documentación de procesos base</span></li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-video text-brand-pink mt-0.5 mr-2 text-base flex-shrink-0"></i> 
+                                <span class="font-bold text-brand-blue text-base">4 sesiones 1 a 1</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-brand-pink mt-1 mr-2 flex-shrink-0"></i> 
+                                <div>
+                                    <strong class="text-gray-800">Sistema Operativo Base (Organización):</strong><br>
+                                    <span class="text-xs text-gray-500 leading-tight block mt-0.5">Dashboard principal, sistema de tareas, agenda semanal, gestión de proyectos y organización digital.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-brand-pink mt-1 mr-2 flex-shrink-0"></i> 
+                                <div>
+                                    <strong class="text-gray-800">Estructura Operacional & Finanzas:</strong><br>
+                                    <span class="text-xs text-gray-500 leading-tight block mt-0.5">Sistema financiero básico, KPIs esenciales y sistematización de 1 proceso de negocio.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-brand-pink mt-1 mr-2 flex-shrink-0"></i> 
+                                <div>
+                                    <strong class="text-gray-800">Automatización Inicial (2 con Make):</strong><br>
+                                    <span class="text-xs text-gray-500 leading-tight block mt-0.5">Ej: Formularios → Notion, Leads → CRM, WA → BD, Calendario → Seguimiento, correos y captura automática.</span>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -605,15 +632,71 @@
                     </div>
                     
                     <div class="flex-grow">
-                        <p class="text-gray-300 mb-4">Para quienes ya tienen un sistema base y necesitan optimizar, automatizar y escalar operaciones.</p>
+                        <p class="text-gray-300 mb-4 text-sm">Para quienes ya tienen un sistema base y necesitan optimizar, automatizar y escalar operaciones a nivel corporativo.</p>
 
-                        <p class="font-bold text-brand-orange mb-4 border-t border-gray-700 pt-4">¿Qué incluye?</p>
-                        <ul class="space-y-3 text-sm text-gray-200">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-orange mt-1 mr-2"></i> <span>Optimización avanzada y SOPs profesionales</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-orange mt-1 mr-2"></i> <span>Inteligencia Financiera: Dashboards ejecutivos</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-orange mt-1 mr-2"></i> <span>Ecosistema Tech: Integraciones e IA aplicada</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-orange mt-1 mr-2"></i> <span>Acompañamiento 1:1 en la gestión operativa</span></li>
-                        </ul>
+                        <p class="font-bold text-brand-orange mb-4 border-t border-gray-700 pt-4">Lo que incluye ORDEN PRO:</p>
+                        
+                        <div class="space-y-5">
+                            <!-- Optimización Completa -->
+                            <div>
+                                <h4 class="text-white font-bold flex items-center gap-2 mb-1 text-sm"><i class="fa-solid fa-layer-group text-brand-orange"></i> Optimización Completa</h4>
+                                <p class="text-xs text-gray-400 leading-tight">Estructura avanzada (6 meses), gestión por departamentos, definición de roles, procesos, SOPs completos y escalabilidad operacional.</p>
+                            </div>
+                            
+                            <!-- Automatización Empresarial -->
+                            <div>
+                                <h4 class="text-white font-bold flex items-center gap-2 mb-1 text-sm"><i class="fa-solid fa-robot text-brand-orange"></i> Automatización Empresarial</h4>
+                                <p class="text-xs text-gray-400 leading-tight">Workflows, IA e integraciones con Make. Ej: CRM automatizado, ventas, seguimiento, reportes, contenido, dashboards inteligentes y flujos operativos.</p>
+                            </div>
+
+                            <!-- Diagramas Operativos -->
+                            <div>
+                                <h4 class="text-white font-bold flex items-center gap-2 mb-1 text-sm"><i class="fa-solid fa-sitemap text-brand-orange"></i> Diagramas Operativos Totales</h4>
+                                <p class="text-xs text-gray-400 leading-tight">Mapeo de TODAS las áreas: ventas, marketing, operaciones, finanzas, atención al cliente, delivery, contenido, ecommerce y reporting.</p>
+                            </div>
+
+                            <!-- Inteligencia Financiera -->
+                            <div>
+                                <h4 class="text-white font-bold flex items-center gap-2 mb-1 text-sm"><i class="fa-solid fa-chart-line text-brand-orange"></i> Inteligencia Financiera</h4>
+                                <p class="text-xs text-gray-400 leading-tight">Control de rentabilidad real, flujo de caja, punto de equilibrio, CAC, LTV, márgenes y optimización de costos ocultos.</p>
+                            </div>
+                            
+                            <!-- Entregables -->
+                            <div class="bg-white/5 border border-white/10 p-4 rounded-xl mt-2">
+                                <h4 class="text-white font-bold text-sm mb-3">Entregables ORDEN PRO:</h4>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-gray-300">
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Sistema operativo avanzado</li>
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> SOPs y Diagramas completos</li>
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Automatizaciones empresariales</li>
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Dashboards y KPIs avanzados</li>
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Optimización financiera</li>
+                                    <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Ecosistema Tech & IA aplicada</li>
+                                    <li class="flex items-center gap-1.5 sm:col-span-2"><i class="fa-solid fa-check text-brand-orange text-[10px]"></i> Roadmap de escalamiento</li>
+                                </ul>
+                            </div>
+
+                            <!-- Adicional Taller -->
+                            <div class="mt-4 bg-gradient-to-br from-brand-orange/20 to-brand-orange/5 border border-brand-orange/30 p-5 rounded-xl relative overflow-hidden">
+                                <div class="absolute top-0 right-0 bg-brand-orange text-brand-blue text-[10px] font-black px-3 py-1 rounded-bl-xl">ADICIONAL INCLUIDO</div>
+                                <h4 class="text-brand-orange font-black text-sm mb-1 uppercase tracking-wide"><i class="fa-solid fa-chalkboard-user mr-1"></i> Taller: Del Caos a la Ejecución</h4>
+                                <p class="text-xs text-gray-300 mb-3 leading-relaxed">Charla/Workshop para empresas y equipos. Aborda la desconexión entre la operación real, las personas y los sistemas. Combina estrategia operativa y cultura organizacional.</p>
+                                
+                                <strong class="text-white text-xs block mb-1">Aprenderán a:</strong>
+                                <ul class="text-xs text-gray-400 space-y-1.5 mb-3">
+                                    <li class="flex items-start gap-1.5"><i class="fa-solid fa-angle-right text-brand-orange mt-0.5 flex-shrink-0"></i> Identificar puntos de fricción operativa.</li>
+                                    <li class="flex items-start gap-1.5"><i class="fa-solid fa-angle-right text-brand-orange mt-0.5 flex-shrink-0"></i> Evitar que implementaciones fracasen.</li>
+                                    <li class="flex items-start gap-1.5"><i class="fa-solid fa-angle-right text-brand-orange mt-0.5 flex-shrink-0"></i> Construir hábitos que sostengan el crecimiento.</li>
+                                    <li class="flex items-start gap-1.5"><i class="fa-solid fa-angle-right text-brand-orange mt-0.5 flex-shrink-0"></i> Alinear equipos con una visión clara de ejecución.</li>
+                                    <li class="flex items-start gap-1.5"><i class="fa-solid fa-angle-right text-brand-orange mt-0.5 flex-shrink-0"></i> Transformar operaciones sin resistencia.</li>
+                                </ul>
+
+                                <div class="flex flex-wrap gap-2 text-[10px] font-bold text-brand-blue mt-4">
+                                    <span class="bg-brand-orange px-2 py-1 rounded">90 min</span>
+                                    <span class="bg-brand-orange px-2 py-1 rounded">Charla + Workshop</span>
+                                    <span class="bg-brand-orange px-2 py-1 rounded">Presencial o Virtual</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mt-8">
@@ -682,6 +765,10 @@
             <div class="mb-16 border-l-4 border-brand-purple pl-6">
                 <h2 class="font-poppins font-black text-3xl text-brand-blue">Ecosistema ORDEN</h2>
                 <p class="text-gray-600 mt-2">Módulos especializados que puedes integrar según tu crecimiento.</p>
+                <div class="mt-4 inline-flex items-start sm:items-center gap-2 px-4 py-3 rounded-xl bg-brand-purple/10 border border-brand-purple/20 text-brand-blue text-sm shadow-sm">
+                    <i class="fa-solid fa-server text-brand-purple mt-0.5 sm:mt-0 text-lg flex-shrink-0"></i>
+                    <span><strong class="text-brand-purple font-black">Nivel Corporativo:</strong> En esta etapa pasamos a herramientas de negocio mucho más robustas (Implementación de ERP, CRM, Business Intelligence, Data, entre otros).</span>
+                </div>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -726,7 +813,7 @@
     <footer class="bg-brand-blue text-white pt-20 pb-10 border-t-8 border-brand-pink">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="font-poppins font-black text-4xl md:text-5xl mb-6">Dejas de improvisar.<br>Empiezas a operar.</h2>
-            <p class="text-xl text-brand-pink font-caveat mb-10">ORDENA TU NEGOCIO. ORGANIZA TU OPERACIÓN. TOMA EL CONTROL.</p>
+            <p class="text-sm md:text-base text-brand-pink font-inter font-bold tracking-[0.2em] mb-10">ORDENA TU NEGOCIO. ORGANIZA TU OPERACIÓN. TOMA EL CONTROL.</p>
             
             <a href="https://wa.me/50763310583?text=Hola!%20Quiero%20ordenar%20mi%20negocio%20y%20agendar%20una%20Asesoria." 
                target="_blank" 
@@ -767,6 +854,9 @@
     </footer>
 
     <script>
+        // Clave de API de entorno para uso en el Canvas Preview
+        const apiKey = "";
+
         // Funcionalidad de pestañas
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
@@ -927,7 +1017,8 @@
             const userContent = document.getElementById(inputField).value.trim();
 
             if (!userContent) {
-                alert("Por favor, ingresa los detalles requeridos para que la IA pueda realizar el diagnóstico.");
+                document.getElementById('ai-error-message').innerText = "Por favor, ingresa los detalles requeridos para que la IA pueda realizar el diagnóstico.";
+                document.getElementById('ai-error-box').classList.remove('hidden');
                 return;
             }
 
@@ -949,19 +1040,20 @@
                 loadingTextElement.innerText = loadingPhrases[phraseIndex];
             }, 2500);
 
-            // Obtención de la API Key proporcionada por el usuario
-            const apiKey = document.getElementById('gemini-api-key').value.trim();
+            // Obtención de la API Key (prioriza input del usuario si existe, sino usa la de Canvas)
+            const userInputKey = document.getElementById('gemini-api-key').value.trim();
+            const activeKey = userInputKey || apiKey;
 
-            if (!apiKey) {
+            if (!activeKey) {
                 clearInterval(loadingInterval);
                 document.getElementById('ai-loading').classList.add('hidden');
-                document.getElementById('ai-error-message').innerText = "Se requiere una API Key de Google Gemini para ejecutar esta función en tu servidor externo. Por favor, pega tu clave en la sección de configuración de abajo.";
+                document.getElementById('ai-error-message').innerText = "Se requiere una API Key de Google Gemini para ejecutar esta función. Por favor, pega tu clave en la sección de configuración de abajo.";
                 document.getElementById('ai-error-box').classList.remove('hidden');
                 return;
             }
 
-            // Uso del modelo estable gemini-2.5-flash
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+            // Uso del modelo compatible de vista previa
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${activeKey}`;
 
             const systemPrompt = currentAiTab === 'sop' 
                 ? `Actúa como una Ingeniera Industrial y Estratega de Sistemas y Operación experta en el Método O.R.D.E.N.
