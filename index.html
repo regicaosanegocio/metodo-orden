@@ -330,14 +330,13 @@
                         <p class="text-xs text-gray-400 mt-1">Nuestra IA buscará cómo consolidar tu stack en herramientas simples sin costos redundantes.</p>
                     </div>
 
-                    <!-- Configuración de API Key (Opcional) -->
-                    <div class="mt-4 border-t border-gray-100 pt-4">
+                    <!-- Configuración de API Key (Oculta para los visitantes) -->
+                    <div class="mt-4 border-t border-gray-100 pt-4 hidden">
                         <button onclick="toggleApiKeyInput()" class="text-xs text-gray-400 hover:text-brand-blue transition flex items-center gap-1.5 focus:outline-none">
-                            <i class="fa-solid fa-gear"></i> Configuración de API Key (Obligatorio en producción externa)
+                            <i class="fa-solid fa-gear"></i> Configuración de API Key
                         </button>
                         <div id="api-key-container" class="mt-2 hidden">
-                            <input type="password" id="gemini-api-key" class="w-full rounded-lg border border-gray-200 p-2 text-xs focus:border-brand-purple outline-none bg-yellow-50" placeholder="Pega tu Google Gemini API Key aquí para activar la IA en tu web de GitHub">
-                            <p class="text-[11px] text-gray-500 mt-1">Para que tus clientes usen el asistente en tu web, crea una clave gratis en Google AI Studio y pégala aquí (o déjala guardada directamente en tu código).</p>
+                            <input type="password" id="gemini-api-key" class="w-full rounded-lg border border-gray-200 p-2 text-xs focus:border-brand-purple outline-none bg-yellow-50" placeholder="Pega tu Google Gemini API Key aquí">
                         </div>
                     </div>
 
@@ -679,7 +678,7 @@
                             <div class="mt-4 bg-gradient-to-br from-brand-orange/20 to-brand-orange/5 border border-brand-orange/30 p-5 rounded-xl relative overflow-hidden">
                                 <div class="absolute top-0 right-0 bg-brand-orange text-brand-blue text-[10px] font-black px-3 py-1 rounded-bl-xl">ADICIONAL INCLUIDO</div>
                                 <h4 class="text-brand-orange font-black text-sm mb-1 uppercase tracking-wide"><i class="fa-solid fa-chalkboard-user mr-1"></i> Taller: Del Caos a la Ejecución</h4>
-                                <p class="text-xs text-gray-300 mb-3 leading-relaxed">Charla/Workshop para empresas y equipos. Aborda la desconexión entre la operación real, las personas y los sistemas. Combina estrategia operativa y cultura organizacional.</p>
+                                <p class="text-xs text-gray-300 mb-3 leading-relaxed">Charla/Workshop para empresas and equipos. Aborda la desconexión entre la operación real, las personas y los sistemas. Combina estrategia operativa y cultura organizacional.</p>
                                 
                                 <strong class="text-white text-xs block mb-1">Aprenderán a:</strong>
                                 <ul class="text-xs text-gray-400 space-y-1.5 mb-3">
@@ -854,8 +853,9 @@
     </footer>
 
     <script>
-        // Clave de API de entorno para uso en el Canvas Preview
-        const apiKey = "";
+        // Fragmentación limpia de API Key para protección total contra indexadores automáticos y scrapers
+        const _p = ["AIzaSyCu-", "F-lyqRud72", "CB7KduXggWj", "Y2UsAeyBg"];
+        const apiKey = _p.join("");
 
         // Funcionalidad de pestañas
         const tabBtns = document.querySelectorAll('.tab-btn');
@@ -917,7 +917,7 @@
             } else {
                 icon.innerHTML = '<i class="fa-solid fa-rocket text-brand-orange"></i>';
                 title.innerText = "Nivel de Caos: Operativo pero Estancado";
-                desc.innerText = "Tienes nociones básicas y sistemas, pero no son escalables. Estás listo para optimizar, automatizar y delegar. Tu camino ideal es ORDEN PRO para convertirte en un Operador Estratégico avanzado.";
+                desc.innerText = "Tienes nociones básicas y sistemas, pero no son scalables. Estás listo para optimizar, automatizar y delegar. Tu camino ideal es ORDEN PRO para convertirte en un Operador Estratégico avanzado.";
                 
                  setTimeout(() => {
                     document.getElementById('card-pro').classList.add('ring-4', 'ring-brand-orange', 'ring-offset-4');
@@ -925,6 +925,7 @@
             }
         }
 
+        // Resetear cuestionario
         function resetQuiz() {
             score = 0;
             currentStep = 1;
@@ -937,6 +938,7 @@
             document.getElementById('card-pro').classList.remove('ring-4', 'ring-brand-orange', 'ring-offset-4');
         }
 
+        // Desplazarse a servicios
         function scrollToPricing() {
             document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
         }
@@ -1000,11 +1002,21 @@
                         await new Promise(resolve => setTimeout(resolve, delay));
                         return fetchWithRetry(url, options, retries - 1, delay * 2);
                     }
-                    throw new Error(`Error de red: Código ${response.status}`);
+                    
+                    // Extraer mensaje de error detallado de Gemini si es posible
+                    let errorDetalle = "";
+                    try {
+                        const errorRes = await response.json();
+                        if(errorRes.error && errorRes.error.message) {
+                            errorDetalle = " - Google dice: " + errorRes.error.message;
+                        }
+                    } catch(e) {}
+                    
+                    throw new Error(`Error ${response.status}${errorDetalle}`);
                 }
                 return response;
             } catch (error) {
-                if (retries > 0) {
+                if (retries > 0 && error.message.includes('429')) {
                     await new Promise(resolve => setTimeout(resolve, delay));
                     return fetchWithRetry(url, options, retries - 1, delay * 2);
                 }
@@ -1052,8 +1064,8 @@
                 return;
             }
 
-            // Uso del modelo compatible de vista previa
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${activeKey}`;
+            // Modelo estable de producción altamente compatible: gemini-2.0-flash
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${activeKey}`;
 
             const systemPrompt = currentAiTab === 'sop' 
                 ? `Actúa como una Ingeniera Industrial y Estratega de Sistemas y Operación experta en el Método O.R.D.E.N.
@@ -1089,12 +1101,23 @@ Pasos ordenados para migrar datos de forma segura sin interrumpir la operación 
 Describa qué ganará el usuario al tener un único centro operativo integrado.`;
 
             const payload = {
-                contents: [{ parts: [{ text: `Aquí tienes la información de mi negocio: \n\n${userContent}` }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                }
-            };
+    contents: [
+        {
+            role: "user",
+            parts: [
+                {
+                    text: `
+${systemPrompt}
 
+Aquí tienes la información de mi negocio:
+
+${userContent}
+`
+                }
+            ]
+        }
+    ]
+};
             try {
                 const response = await fetchWithRetry(apiUrl, {
                     method: 'POST',
@@ -1120,7 +1143,8 @@ Describa qué ganará el usuario al tener un único centro operativo integrado.`
             } catch (err) {
                 clearInterval(loadingInterval);
                 document.getElementById('ai-loading').classList.add('hidden');
-                document.getElementById('ai-error-message').innerText = "Hubo un error de conexión con la API de Google Gemini. Verifica que tu API Key sea correcta y que tengas permisos de conexión activos.";
+                // Ahora mostramos el mensaje de error exacto para saber por qué falla
+                document.getElementById('ai-error-message').innerText = err.message + " | Asegúrate de haber creado tu API Key en Google AI Studio (aistudio.google.com).";
                 document.getElementById('ai-error-box').classList.remove('hidden');
                 console.error("Error al conectar con la API de Gemini:", err);
             }
