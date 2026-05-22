@@ -194,7 +194,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="font-caveat text-4xl text-brand-pink mb-2">Hola, soy la creadora de ORDEN</h2>
+                    <h2 class="font-inter font-bold text-brand-pink text-sm md:text-base uppercase tracking-widest mb-3">Hola, soy la creadora de ORDEN</h2>
                     <h3 class="font-poppins font-black text-4xl md:text-5xl mb-6">El caos es el enemigo, <br>no tu falta de ganas.</h3>
                     
                     <div class="space-y-4 text-gray-300 text-lg">
@@ -1053,7 +1053,7 @@
             }
 
             // Uso del modelo compatible de vista previa
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${activeKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${activeKey}`;
 
             const systemPrompt = currentAiTab === 'sop' 
                 ? `Actúa como una Ingeniera Industrial y Estratega de Sistemas y Operación experta en el Método O.R.D.E.N.
