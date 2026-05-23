@@ -678,7 +678,7 @@
                             <div class="mt-4 bg-gradient-to-br from-brand-orange/20 to-brand-orange/5 border border-brand-orange/30 p-5 rounded-xl relative overflow-hidden">
                                 <div class="absolute top-0 right-0 bg-brand-orange text-brand-blue text-[10px] font-black px-3 py-1 rounded-bl-xl">ADICIONAL INCLUIDO</div>
                                 <h4 class="text-brand-orange font-black text-sm mb-1 uppercase tracking-wide"><i class="fa-solid fa-chalkboard-user mr-1"></i> Taller: Del Caos a la Ejecución</h4>
-                                <p class="text-xs text-gray-300 mb-3 leading-relaxed">Charla/Workshop para empresas and equipos. Aborda la desconexión entre la operación real, las personas y los sistemas. Combina estrategia operativa y cultura organizacional.</p>
+                                <p class="text-xs text-gray-300 mb-3 leading-relaxed">Charla/Workshop para empresas y equipos. Aborda la desconexión entre la operación real, las personas y los sistemas. Combina estrategia operativa y cultura organizacional.</p>
                                 
                                 <strong class="text-white text-xs block mb-1">Aprenderán a:</strong>
                                 <ul class="text-xs text-gray-400 space-y-1.5 mb-3">
@@ -1068,9 +1068,38 @@
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${activeKey}`;
 
             const systemPrompt = currentAiTab === 'sop' 
-                ? `Actúa como una Ingeniera Industrial y Estratega de Sistemas y Operación experta en el Método O.R.D.E.N.
-Su misión es transformar un flujo de trabajo desorganizado y caótico en un Procedimiento Operativo Estándar (SOP) claro, ágil y ultra-simplificado.
-Utilice un tono profesional, estructurado, empático y directo.
+                ? `Eres un consultor estratégico especializado en operaciones, automatización e inteligencia empresarial.
+
+Tu función NO es entregar auditorías completamente técnicas ni resolver todos los problemas del usuario.
+
+Tu objetivo es:
+- detectar oportunidades críticas
+- revelar puntos ciegos operativos
+- mostrar posibles pérdidas ocultas
+- generar percepción de valor
+- despertar interés por optimización y automatización avanzada
+
+Debes comunicarte como un consultor senior de alto nivel:
+- estratégico
+- claro
+- profesional
+- persuasivo
+- orientado a impacto empresarial
+
+IMPORTANTE:
+- No entregues soluciones completas paso a paso.
+- No reveles implementaciones técnicas profundas.
+- Mantén parte del diagnóstico a nivel estratégico.
+- Enfatiza consecuencias, oportunidades y riesgos.
+- Habla más de impacto operativo y crecimiento que de detalles técnicos.
+- Usa lenguaje ejecutivo y consultivo.
+- Haz que el usuario sienta que existe una oportunidad importante de mejora.
+
+Tu objetivo es que el usuario perciba:
+1. Que existen problemas relevantes.
+2. Que tú entiendes el negocio.
+3. Que hay oportunidades ocultas.
+4. Que necesita profundizar contigo.
 
 Estructure el resultado usando las siguientes secciones estrictamente con estos nombres:
 ## 1. Diagnóstico del Cuello de Botella (Observar)
@@ -1084,7 +1113,7 @@ Proponga un ecosistema tecnológico minimalista (Notion, Google Drive, WhatsApp,
 
 ## 4. Ejecución Diaria: Lista de Control Rápida
 Una lista rápida de tareas que el emprendedor o su equipo pueden seguir cada vez que se ejecute este proceso.`
-                : `Actúa como una Ingeniera Industrial y Consultora de Tecnología y Procesos experta en el Método O.R.D.E.N.
+                : `Actúa como un consultor estratégico especializado en operaciones, automatización e inteligencia empresarial y Consultora de Tecnología y Procesos experta en el Método O.R.D.E.N.
 Su objetivo es analizar el ecosistema tecnológico de un negocio pequeño o mediano y proponer una reducción drástica del gasto y la complejidad de las herramientas (Consolidación de Stack).
 
 Estructure el resultado usando las siguientes secciones estrictamente con estos nombres:
